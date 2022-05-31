@@ -53,7 +53,7 @@ int main(int argc, char** argv) {
   // are created. This channel models a connection to an endpoint (in this case,
   // localhost at port 50051). We indicate that the channel isn't authenticated
   // (use of InsecureChannelCredentials()).
-    sRpcClient client(grpc::CreateChannel("localhost:57548", grpc::InsecureChannelCredentials()));
+    sRpcClient client(grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
 
     std::string req = client.call();
     std::cout<<"req "<<req<<std::endl;
