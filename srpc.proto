@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option optimize_for = LITE_RUNTIME;
+
+package srpc;
+
+enum format {
+    json    = 0;
+    protobuf= 1;
+}
+
+message req {
+    format format= 1;
+    string url       = 2;
+    string ip        = 3;
+    string userId    = 4;
+    string openId    = 5;
+    bytes  body      = 6;
+}
+
+message res {
+    int32  code= 1;
+    int64  now = 2;
+    string msg = 3;
+    bytes  data= 4;
+}
+
+service rpc {
+    rpc call(req) returns (res) {}
+}
