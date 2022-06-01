@@ -33,3 +33,7 @@ target_link_libraries(client PRIVATE Threads::Threads gRPC::gpr gRPC::upb gRPC::
 add_executable(async_client src/async_client.cpp include/srpc.grpc.pb.cc include/srpc.pb.cc)
 target_compile_features(async_client PRIVATE cxx_std_17)
 target_link_libraries(async_client PRIVATE Threads::Threads gRPC::gpr gRPC::upb gRPC::grpc gRPC::grpc++ protobuf::libprotoc protobuf::libprotobuf protobuf::libprotobuf-lite)
+
+add_executable(async_server src/async_server.cpp include/srpc.grpc.pb.cc include/srpc.pb.cc)
+target_compile_features(async_server PRIVATE cxx_std_17)
+target_link_libraries(async_server PRIVATE Threads::Threads gRPC::gpr gRPC::upb gRPC::grpc gRPC::grpc++ protobuf::libprotoc protobuf::libprotobuf protobuf::libprotobuf-lite)

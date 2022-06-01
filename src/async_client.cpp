@@ -17,6 +17,18 @@ using grpc::CompletionQueue;
 using srpc::rpc;
 
 class sRpcClient {
+private:
+
+    struct AsyncClientCall {
+        srpc::res res;
+        ClientContext ctx;
+        Status status;
+
+        std::unique_ptr<ClientAsyncResponseReader<srpc::res>> res_reader;
+    };
+    CompletionQueue cq_;  
+    std::unique_ptr<rpc::Stub> stub_;
+
 public:
     sRpcClient(std::shared_ptr<Channel> channel): stub_(rpc::NewStub(channel)) {
     }
@@ -55,18 +67,6 @@ public:
             delete client;        
         }
     }
-private:
-
-    struct AsyncClientCall {
-        srpc::res res;
-        ClientContext ctx;
-        Status status;
-
-        std::unique_ptr<ClientAsyncResponseReader<srpc::res>> res_reader;
-    };
-    CompletionQueue cq_;  
-
-    std::unique_ptr<rpc::Stub> stub_;
 };
 
 int main(int argc, char** argv) {
