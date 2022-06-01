@@ -53,7 +53,8 @@
         "random": "cpp",
         "set": "cpp",
         "string": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "cinttypes": "cpp"
     },
     "cmake.configureSettings": {
         "CMAKE_TOOLCHAIN_FILE": "/home/code/download/vcpkg/scripts/buildsystems/vcpkg.cmake",
