@@ -29,6 +29,9 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 find_package(Threads REQUIRED)
 
+find_package(Boost REQUIRED COMPONENTS)
+include_directories(${Boost_INCLUDE_DIRS})
+
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/src)
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
@@ -49,3 +52,14 @@ add_executable(async_server src/async_server.cpp include/srpc.grpc.pb.cc include
 target_compile_features(async_server PRIVATE cxx_std_17)
 target_link_libraries(async_server PRIVATE Threads::Threads gRPC::gpr gRPC::upb gRPC::grpc gRPC::grpc++ protobuf::libprotoc protobuf::libprotobuf protobuf::libprotobuf-lite)
 
+add_executable(http src/http.cpp)
+target_compile_features(http PRIVATE cxx_std_17)
+target_link_libraries(http PRIVATE Threads::Threads)
+
+add_executable(websocket src/websocket.cpp)
+target_compile_features(websocket PRIVATE cxx_std_17)
+target_link_libraries(websocket PRIVATE Threads::Threads)
+
+add_executable(async_websocket src/async_websocket.cpp)
+target_compile_features(async_websocket PRIVATE cxx_std_17)
+target_link_libraries(async_websocket PRIVATE Threads::Threads)
