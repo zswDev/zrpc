@@ -7,7 +7,7 @@
                 "${workspaceFolder}/include/**",
                 "/usr/include/**",
                 "/usr/local/include/**",
-                "/home/code/download/vcpkg-master/installed/x64-linux/include/**"
+                "/home/code/download/vcpkg/installed/x64-linux/include/**"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang++",
