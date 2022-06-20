@@ -66,15 +66,12 @@ add_executable(websocket src/websocket.cpp)
 target_link_libraries(websocket PRIVATE Threads::Threads)
 
 add_executable(async_websocket src/async_websocket.cpp)
-target_compile_features(async_websocket PRIVATE cxx_std_17)
 target_link_libraries(async_websocket PRIVATE Threads::Threads)
 
 add_executable(chan src/chan.cpp)
-target_compile_features(chan PRIVATE cxx_std_17)
 target_link_libraries(chan PRIVATE Threads::Threads)
 
 add_executable(gate src/gate.cpp)
-target_compile_features(gate PRIVATE cxx_std_17)
 target_link_libraries(gate PRIVATE Threads::Threads)
 
 add_executable(redis src/redis.cpp)
