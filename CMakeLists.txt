@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.22)
 
 
-set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Os -Wall -s")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -Wall")
 
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Os -Wall -s")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall")
 
 find_program(CCACHE_FOUND ccache)
 if(CCACHE_FOUND)
@@ -63,3 +63,11 @@ target_link_libraries(websocket PRIVATE Threads::Threads)
 add_executable(async_websocket src/async_websocket.cpp)
 target_compile_features(async_websocket PRIVATE cxx_std_17)
 target_link_libraries(async_websocket PRIVATE Threads::Threads)
+
+add_executable(chan src/chan.cpp)
+target_compile_features(chan PRIVATE cxx_std_17)
+target_link_libraries(chan PRIVATE Threads::Threads)
+
+add_executable(gate src/gate.cpp)
+target_compile_features(gate PRIVATE cxx_std_17)
+target_link_libraries(gate PRIVATE Threads::Threads)
