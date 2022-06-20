@@ -75,7 +75,7 @@ add_executable(gate src/gate.cpp)
 target_link_libraries(gate PRIVATE Threads::Threads)
 
 add_executable(redis src/redis.cpp)
-target_link_libraries(redis PRIVATE ${HI_REDIS} redis++::redis++_static)
+target_link_libraries(redis PRIVATE ${HI_REDIS} redis++::redis++_static Threads::Threads)
 
 add_executable(mongo src/mongo.cpp)
 target_link_libraries(mongo PRIVATE mongo::mongoc_static mongo::mongocxx_static mongo::bsoncxx_static)

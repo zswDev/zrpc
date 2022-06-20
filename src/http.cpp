@@ -169,7 +169,7 @@ private:
 // "Loop" forever accepting new connections.
 void http_server(
     tcp::acceptor& acceptor,
-    tcp::socket& socket,
+    tcp::socket& socket
     //net::ssl::context& ctx
 ) {
     acceptor.async_accept(socket, [&](beast::error_code ec) {
@@ -186,7 +186,7 @@ void http_server(
         if(!ec) {
             make_shared<http_connection>(move(socket))->start();
         }
-        http_server(acceptor, socket, ctx);
+        //http_server(acceptor, socket, ctx);
     });
 }
 void load_certificate(net::ssl::context& ctx);
@@ -214,7 +214,7 @@ int main(int argc, char* argv[]) {
         tcp::acceptor acceptor{ioc, {address, port}};
         tcp::socket socket{ioc};
 
-        http_server(acceptor, socket, /*ctx*/);
+        http_server(acceptor, socket /*ctx*/);
 
         ioc.run();
     } catch(exception const& e) {
