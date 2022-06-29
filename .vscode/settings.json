@@ -65,7 +65,10 @@
         "future": "cpp",
         "iomanip": "cpp",
         "typeindex": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "forward_list": "cpp",
+        "filesystem": "cpp",
+        "valarray": "cpp"
     },
     "cmake.configureSettings": {
         "CMAKE_TOOLCHAIN_FILE": "/home/code/download/vcpkg/scripts/buildsystems/vcpkg.cmake",
