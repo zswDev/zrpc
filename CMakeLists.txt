@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.22)
 
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O -Wall")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2 -Wall")
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -Wall")
 
 find_program(CCACHE_FOUND ccache)
 if(CCACHE_FOUND)
@@ -29,8 +29,8 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 
 find_package(Threads REQUIRED)
 
-# find_package(Boost REQUIRED COMPONENTS)
-# include_directories(${Boost_INCLUDE_DIRS})
+find_package(Boost REQUIRED COMPONENTS)
+include_directories(${Boost_INCLUDE_DIRS})
 
 # find_library(HI_REDIS hiredis)
 # find_package(redis++ CONFIG REQUIRED)
@@ -41,7 +41,7 @@ find_package(Threads REQUIRED)
 
 # find_package(nlohmann_json CONFIG REQUIRED)
 
-# find_package(OpenSSL REQUIRED)
+find_package(OpenSSL REQUIRED)
 
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/src)
@@ -60,7 +60,11 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 # target_link_libraries(async_server PRIVATE Threads::Threads gRPC::gpr gRPC::upb gRPC::grpc gRPC::grpc++ protobuf::libprotoc protobuf::libprotobuf protobuf::libprotobuf-lite)
 
 # add_executable(http src/http.cpp)
-# target_link_libraries(http PRIVATE Threads::Threads OpenSSL::SSL OpenSSL::Crypto)
+# target_link_libraries(http PRIVATE Threads::Threads)
+
+add_executable(https src/https.cpp)
+target_link_libraries(https PRIVATE Threads::Threads OpenSSL::SSL OpenSSL::Crypto)
+
 
 # add_executable(websocket src/websocket.cpp)
 # target_link_libraries(websocket PRIVATE Threads::Threads)
